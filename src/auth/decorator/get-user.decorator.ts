@@ -1,8 +1,13 @@
-import { createParamDecorator, ExecutionContext } from "@nestjs/common";
-import { ExcludeMetadata } from "class-transformer";
+import {
+  createParamDecorator,
+  ExecutionContext,
+} from '@nestjs/common';
 
 export const GetUser = createParamDecorator(
-  (data: string | undefined, ctx: ExecutionContext) => {
+  (
+    data: string | undefined,
+    ctx: ExecutionContext,
+  ) => {
     const request = ctx
       .switchToHttp()
       .getRequest();
@@ -11,5 +16,5 @@ export const GetUser = createParamDecorator(
       return request.user[data];
     }
     return request.user;
-  }
-)
+  },
+);
